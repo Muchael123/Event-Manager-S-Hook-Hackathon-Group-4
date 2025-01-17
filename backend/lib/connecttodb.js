@@ -25,6 +25,14 @@ const ConnectToDB = () => {
         updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
       )
     `;
+    const createCategoriesTable = `
+      CREATE TABLE IF NOT EXISTS categories (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(100) NOT NULL UNIQUE,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+      )`;
+
     connection.query(createUsersTable, (err, results, fields) => {
         if (err) {
             console.error('Error creating the users table:', err);
@@ -32,6 +40,26 @@ const ConnectToDB = () => {
             console.log('Users table created successfully');
         }
         });
+    connection.query(createCategoriesTable, (err, results, fields) => {
+        if (err) {
+            console.error('Error creating the categories table:', err);
+        } else {
+            console.log('Categories table created successfully');
+        }
+        });
+
+    const insertCategories = `
+      INSERT IGNORE INTO categories (name)
+      VALUES ('Conferences'), ('Hackathons'), ('Webinars'), ('Workshops'), ('Meetups'), ('Product Launches'), ('Trade Shows and Expos'), ('online'), ('in-Person'), ('Hybrid')
+    `;
+
+    connection.query(insertCategories, (err, results, fields) => {
+        if (err) {
+            console.error('Error inserting data into categories table:', err);
+        } else {
+            console.log('Categories inserted successfully');
+        }
+    });
 };
 
 export default ConnectToDB;

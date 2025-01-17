@@ -2,7 +2,7 @@
 
 ### 1. **User Registration**
 
-- **URL:** `/api/auth/register`
+- **URL:** `/auth/register`
 - **Method:** `POST`
 - **Description:** Registers a new user in the system.
 - **Request Body:**
@@ -55,7 +55,7 @@
 
 ### 2. **User Login**
 
-- **URL:** `/api/auth/login`
+- **URL:** `/auth/login`
 - **Method:** `POST`
 - **Description:** Authenticates a user and returns a token for future requests.
 - **Request Body:**
@@ -102,3 +102,29 @@
     ```
     - **Description:** An unexpected error occurred while processing the login request. This is typically due to a server-side issue, and the user should try again later.
 
+### 3. **Categories**
+
+- **URL:** `/categories`
+- **Method:** `GET`
+- **Description:** Get a list of all categories.
+- **No params are passed**
+- **Responses:**
+
+  - **Success (200):**
+    ```json
+    {
+      "categories": ["list of all categories"	]
+    }
+    ```
+  - **Not Found (404):**
+    ```json
+      {
+        "message":"No categories found"
+      }
+    ```
+  - **Server Error (500)**
+    ```json
+      {
+        "message":"Error fetching categories. Please try again"
+      }
+    ```
