@@ -1,4 +1,4 @@
-import { connection } from "../lib/connecttodb.js";
+import connection  from "../lib/db.js";
 import jwt from 'jsonwebtoken'
 
 const Login = async (req, res) => {
@@ -9,7 +9,7 @@ const Login = async (req, res) => {
         if (result.length === 0) {
             return res.status(401).json({ message: 'Invalid email or password' });
         }else{
-            console.log(result);
+            console.log( result[0].id, "result[0].id");
             const token = jwt.sign({ userId: result[0].id }, process.env.JWT_SECRET, { expiresIn: "30d" });
             res.status(200).json({ message: 'Login successful', user: result[0], token });
         }

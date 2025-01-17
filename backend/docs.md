@@ -128,3 +128,34 @@
         "message":"Error fetching categories. Please try again"
       }
     ```
+### 4. **Events**
+- **URL:** `/categories`
+- **Method:** `GET, POst`
+- **Description:** Get a list of all categories. It can also be used to add an event
+- #### i. `GET Method`
+    - **Description:** Get a list of all or one categories. It uses pagination and limit as a parameter.
+    - - **Request params:**
+      ```json
+      {
+        "page":"Number default = 1",
+         "limit " : "Number Default=5",
+         "categories": "comma separated string"
+      }
+      ```
+      - **example**
+        `http://localhost:3001/api/v1/events?page=1&limit=5&categories=Conferences, Hackathons` - You can replace the url with the base URL
+    - **RESPONSES**
+       - **Success (200):**
+        ```json
+        {
+          "events": ["list of all events according to params"	]
+        }
+        ```
+      - **Not Found (404):**
+        ```json
+          {
+            "message": "No events found"
+          }
+        ```
+
+    

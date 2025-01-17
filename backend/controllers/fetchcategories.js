@@ -1,4 +1,4 @@
-import { connection } from "../lib/connecttodb.js";
+import connection from "../lib/db.js";
 
 export default async function FetchAllCategories (req, res){
      const query = `SELECT * FROM categories`;
