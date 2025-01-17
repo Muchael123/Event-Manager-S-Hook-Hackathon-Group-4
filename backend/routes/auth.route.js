@@ -1,11 +1,11 @@
 import { Router } from "express";
 import ValidateReg from "../middlewares/validateregistration.js";
 import Register from "../controllers/register.controller.js";
+import ValidateLogin from "../middlewares/validatelogin.js";
+import Login from "../controllers/login.controller.js";
 const router = Router()
 
-router.post("/login", (req,res)=>{
-    res.status(200).send("auth coming soon...")
-})
+router.post("/login",ValidateLogin,Login)
 
 router.post("/register",ValidateReg,Register)
 
