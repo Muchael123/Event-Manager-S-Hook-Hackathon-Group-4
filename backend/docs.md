@@ -1,4 +1,4 @@
-### N/B. **Base URL - `event-manager-g4.vercel.app`**
+### N/B. **Base URL - https://event-manager-g4.vercel.app**
 
 ### 1. **User Registration**
 
