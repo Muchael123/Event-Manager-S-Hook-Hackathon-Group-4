@@ -157,5 +157,58 @@
             "message": "No events found"
           }
         ```
+- #### ii. `POST Method`
+  - **  - **Description:** Add an event
+  -  **Request headers:**
+     ```js
+     Authorization: '[Your_access_token]'
+     ```
+  - **Request body**
+    ```json
+      {
+      "title": "Tech Conference 2025",
+      "description": "A major tech event bringing together industry leaders to discuss the future of technology.",
+      "event_date": "2025-05-20",
+      "event_time": "09:00:00",
+      "duration": 1,
+      "location": "Nairobi Convention Center, Nairobi, Kenya",
+      "image_url": "https://example.com/event-image.jpg",
+      "category": ["Conferences", "Technology"],
+      "max_attendees": 500,
+      "ticket_price": 1500.00,
+      "is_featured": true,
+      "current_attendees": 20
+    }
+     ```
+  - **Responses**
+    - **201 - created successfully**
+    ```
+      {
+      "message": "Event created successfully",
+      "event": {
+        "fieldCount": 0,
+        "affectedRows": 1,
+        "insertId": 8,
+        "info": "",
+        "serverStatus": 2,
+        "warningStatus": 0,
+        "changedRows": 0
+      }
+    }
+    ```
+    - **Server Error (500)**
+    ```json
+      {
+        "message":"Error fetching categories. Please try again"
+      }
+    ```
+    - **Acess Denied (409)**
+      - This means that either you have no access token or its invalid
+    ```json
+      {
+        "message":"Access denied"
+      }
+    ```
+
 
     
