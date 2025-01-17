@@ -1,33 +1,5 @@
-# API Documentation - Authentication
 
-## Overview
 
-This document provides details about the authentication endpoints for the Event-Manager-S-Hook-Hackathon-Group-4 API. The API allows users to register, log in, and perform basic authentication-related operations.
-
----
-
-## Base URL
-`event-manager-g4.vercel.app/api/v1`
-
-## Endpoints
-
-### 1. **User Registration**
-
-- **URL:** `/auth/register`
-- **Method:** `POST`
-- **Description:** Registers a new user in the system.
-- **Request Body:**
-  ```json
-  {
-    "name": "John Doe",
-    "email": "johndoe@example.com",
-    "password": "password123",
-    "phone_no": "1234567890",
-    "profile_img": "http://example.com/profile.jpg"
-  }
-Here's the markdown code for the **User Registration** section with the responses included:
-
-```markdown
 ### 1. **User Registration**
 
 - **URL:** `/api/auth/register`
@@ -70,4 +42,10 @@ Here's the markdown code for the **User Registration** section with the response
     ```
     - **Description:** The request is missing one or more required fields, such as the name, email, or password. Ensure that all fields are provided in the correct format.
 
-  
+  - **Internal Server Error (500):**
+    ```json
+    {
+      "error": "An error occurred during registration. Please try again later."
+    }
+    ```
+    - **Description:** An unexpected error occurred while processing the registration request.
