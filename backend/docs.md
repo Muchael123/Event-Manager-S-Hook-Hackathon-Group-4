@@ -49,3 +49,56 @@
     }
     ```
     - **Description:** An unexpected error occurred while processing the registration request.
+  
+ 
+
+
+### 2. **User Login**
+
+- **URL:** `/api/auth/login`
+- **Method:** `POST`
+- **Description:** Authenticates a user and returns a token for future requests.
+- **Request Body:**
+  ```json
+  {
+    "email": "johndoe@example.com",
+    "password": "password123"
+  }
+  ```
+
+- **Responses:**
+
+  - **Success (200):**
+    ```json
+    {
+      "message": "Login successful!",
+      "user": "[Your user details]",
+      "token": "your_jwt_token_here"
+    }
+    ```
+    - **Description:** The user credentials were successfully authenticated, and a JWT token is returned for further use. This token should be included in the `Authorization` header for protected routes.
+
+  - **Unauthorized (401) - Invalid Credentials:**
+    ```json
+    {
+      "error": "Invalid email or password."
+    }
+    ```
+    - **Description:** The email or password provided is incorrect. The user should ensure that both fields are correct.
+
+  - **Bad Request (400) - Missing Fields:**
+    ```json
+    {
+      "error": "Please provide both email and password."
+    }
+    ```
+    - **Description:** The request is missing one or both of the required fields: email and password. Ensure both fields are provided.
+
+  - **Internal Server Error (500):**
+    ```json
+    {
+      "error": "An error occurred during login. Please try again later."
+    }
+    ```
+    - **Description:** An unexpected error occurred while processing the login request. This is typically due to a server-side issue, and the user should try again later.
+
