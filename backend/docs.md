@@ -257,8 +257,8 @@
         }
       }
       ```
-  - **Delete an Event**
-    - URL - `/event/[event_id]`
+ **Delete an Event**
+   - URL - `/event/[event_id]`
     - Method - `DELETE`
     - Headers - Authorization : `Your_Token`
     - **responses**
@@ -268,6 +268,7 @@
         ```json
           "message": "Event '${title}' deleted successfully"
           ```
+   
 
 
       
