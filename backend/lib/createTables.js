@@ -1,3 +1,4 @@
+import TicketTrigger from './createTicketTrigger.js';
 import connection from './db.js';
 import { insertCategories } from './insertData.js';
 
@@ -37,18 +38,33 @@ export const createAllTables = () => {
       category JSON,
       max_attendees INT,
       current_attendees INT DEFAULT 0,
-      user VARCHAR(36),
+      user_id VARCHAR(36),
       ticket_price DECIMAL(10, 2),
       is_featured BOOLEAN DEFAULT FALSE,
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
       updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-      FOREIGN KEY (user) REFERENCES users(id)
-    )
+      FOREIGN KEY (user_id) REFERENCES users(id)
+    )`;
+  const createTicketsTableQuery = `
+  CREATE TABLE IF NOT EXISTS tickets (
+    id VARCHAR(36) PRIMARY KEY ,  
+    event_id INT,  
+    user_id VARCHAR(36),  
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (event_id) REFERENCES events(id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    INDEX idx_event (event_id),
+    INDEX idx_user (user_id)
+)
   `;
+
   const DropeventsTableQuery = `DROP TABLE IF EXISTS events`;
   const DropUsersTableQuery = `DROP TABLE IF EXISTS users`;
+  const DropCategoriesTableQuery = `DROP TABLE IF EXISTS categories`;
+  const DropTicketsTableQuery = `DROP TABLE IF EXISTS tickets`;
 
-  const queries = [createUsersTableQuery, createCategoriesTableQuery, createEventsTableQuery];
+  const queries = [createUsersTableQuery, createCategoriesTableQuery, createEventsTableQuery, createTicketsTableQuery];
 
   queries.forEach((query) => {
     connection.query(query, (err) => {
@@ -60,6 +76,7 @@ export const createAllTables = () => {
     });
   });
   insertCategories();
+  // TicketTrigger();
 };
 
 export default createAllTables;
