@@ -5,7 +5,7 @@ export default async function CreateEvent (req, res) {
     const { title, description, event_date, event_time, duration, location, image_url, category, max_attendees, ticket_price, is_featured, current_attendees } = req.body;
     const user = req.userId;
     console.log(JSON.stringify(category), user)
-     let query = `INSERT INTO events (title, description, event_date, event_time, duration, location, image_url, category, max_attendees, ticket_price, is_featured, current_attendees, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+     let query = `INSERT INTO events (title, description, event_date, event_time, duration, location, image_url, category, max_attendees, ticket_price, is_featured,  user_id) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
     try{
         const [result] = await connection.promise().query(query, [title, description, event_date, event_time, duration, location, image_url, JSON.stringify(category), max_attendees, ticket_price, is_featured, current_attendees, user]);
         console.log(result);
