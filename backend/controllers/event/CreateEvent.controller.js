@@ -14,7 +14,10 @@ export default async function CreateEvent (req, res) {
          });
 
     }catch(err){
-        console.error('Error creating event:', err);
+        if(err.code === 'ER_DUP_ENTRY'){
+            return res.status(409).json({ message: 'Event already exists' });
+        }
         return res.status(500).json({ message: 'Error creating event. Please try again' });
+        console.error('Error creating event:', err);
     }
 }

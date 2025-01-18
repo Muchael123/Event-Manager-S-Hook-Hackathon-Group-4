@@ -3,12 +3,18 @@ import AuthRouter from './routes/auth.route.js'
 import categoryRoutes from './routes/categories.route.js'
 import EventsRouter from './routes/events.route.js'
 import createAllTables from './lib/createTables.js'
+import morgan from 'morgan'
 
 const app = express()
 const port = 3001
 const apiurl = "/api/v1"
 
 app.use(express.json())
+app.use(express.urlencoded({ extended: false }))
+app.use(morgan('combined',{
+  skip: function (req, res) { return res.statusCode === 500 }
+}))
+
 createAllTables()
 
 
