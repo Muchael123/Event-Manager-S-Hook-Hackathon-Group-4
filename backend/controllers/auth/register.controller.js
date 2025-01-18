@@ -1,8 +1,12 @@
-import connection  from "../lib/db.js";
+import connection  from "../../lib/db.js";
 import { randomUUID } from 'crypto';
+import bcrypt from 'bcryptjs';
 
 export default async function Register(req, res) {
-    const { email, password, name } = req.body;
+    const { email, name } = req.body;
+    const password =await bcrypt.hash(
+        req.body.password,10
+      );
     const phone_no = req.body.phone_no || '+254 700 000 000';
     const profile_img = req.body.profile_img || 'https://www.nicepng.com/png/detail/933-9332131_profile-picture-default-png.png';
     const id = randomUUID();

@@ -1,4 +1,4 @@
-import connection from "../lib/db.js";
+import connection from "../../lib/db.js";
 
 export default async function CreateEvent (req, res) {
     console.log(req.body, "req.body")

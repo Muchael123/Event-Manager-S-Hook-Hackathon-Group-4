@@ -1,4 +1,10 @@
 ### N/B. **Base URL - https://event-manager-g4.vercel.app**
+## Routes
+- [Routes](#routes)
+  - [1. **User Registration**](#1-user-registration)
+  - [2. **User Login**](#2-user-login)
+  - [3. **Categories**](#3-categories)
+  - [4. **Events**](#4-events)
 
 ### 1. **User Registration**
 
@@ -137,6 +143,7 @@
     - - **Request params:**
       ```json
       {
+        <!-- All of these are optional -->
         "page":"Number default = 1",
          "limit " : "Number Default=5",
          "categories": "comma separated string"
@@ -158,7 +165,7 @@
           }
         ```
 - #### ii. `POST Method`
-  - **  - **Description:** Add an event
+  - **Description:** Add an event
   -  **Request headers:**
      ```js
      Authorization: '[Your_access_token]'
@@ -209,6 +216,55 @@
         "message":"Access denied"
       }
     ```
+- **Edit Event**
+  - Url `/event/edit`
+  - Method `PATCH`
+  - Headers - Authorization : `Your_Token`
+  - body
+    ```json
+     "id" : "Id of the event (Required)",
+     <!-- Any other key here -->
+      "[key]": "[value]"
+    ```
+  - **example**
+    ```json 
+        {
+        "title": "Tech Conference 2025",
+        "description": "A major tech event bringing together industry leaders to discuss the future of technology.",
+        "event_date": "2025-05-20",
+        "id": 1,
+        "is_featured": true
+        }
+     ```
+
+  - Responses
+    - 409 - Access denied (You have to find the auth token)
+    - 404 - Event not found (Incase an invalid id was passed)
+    - 500 - Server Error
+    - 200 - Event updated successfully
+    - **example**:
+      ```json
+            {
+        "message": "Event created successfully",
+        "event": {
+          "fieldCount": 0,
+          "affectedRows": 1,
+          "insertId": 1,
+          "info": "",
+          "serverStatus": 2,
+          "warningStatus": 0,
+          "changedRows": 0
+        }
+      }
+      ```
+  - **Delete an Event**
+    - URL - `/event/[event_id]`
+    - Method - `DELETE`
+    - Headers - Authorization : `Your_Token`
+
+
+      
+
 
 
     

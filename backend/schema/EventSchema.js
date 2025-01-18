@@ -15,4 +15,5 @@ const EventSchema = Joi.object({
     current_attendees: Joi.number().integer().optional(),
 })
 
+
 export default EventSchema;

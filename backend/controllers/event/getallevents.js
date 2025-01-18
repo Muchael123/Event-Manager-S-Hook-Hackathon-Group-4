@@ -1,4 +1,4 @@
-import connection from "../lib/db.js";
+import connection from "../../lib/db.js";
 
 // const timeline = [
 //     "This week",
