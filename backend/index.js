@@ -2,6 +2,7 @@ import express from 'express'
 import AuthRouter from './routes/auth.route.js'
 import categoryRoutes from './routes/categories.route.js'
 import EventsRouter from './routes/events.route.js'
+import TicketRoutes from './routes/tickets.routes.js'
 import createAllTables from './lib/createTables.js'
 import morgan from 'morgan'
 
@@ -24,6 +25,7 @@ app.get('/', (req, res) => {
 app.use(apiurl+`/auth`, AuthRouter)
 app.use(apiurl+`/categories`, categoryRoutes)
 app.use(apiurl+'/events', EventsRouter)
+app.use(apiurl+'/tickets', TicketRoutes)
 
 app.listen(port, () => {
     console.log(`App running on  http://localhost:${port}`)

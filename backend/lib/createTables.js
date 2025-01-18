@@ -37,7 +37,6 @@ export const createAllTables = () => {
       image_url VARCHAR(255),
       category JSON,
       max_attendees INT,
-      current_attendees INT DEFAULT 0,
       user_id VARCHAR(36),
       ticket_price DECIMAL(10, 2),
       is_featured BOOLEAN DEFAULT FALSE,
@@ -47,9 +46,13 @@ export const createAllTables = () => {
     )`;
   const createTicketsTableQuery = `
   CREATE TABLE IF NOT EXISTS tickets (
+    ticket_no INT AUTO_INCREMENT UNIQUE,
     id VARCHAR(36) PRIMARY KEY ,  
-    event_id INT,  
-    user_id VARCHAR(36),  
+    event_id INT NOT NULL,  
+    user_id VARCHAR(36) NOT NULL,
+    attendee_name VARCHAR(100) NOT NULL,
+    attendee_email VARCHAR(100) NOT NULL Default 'N/A',
+    used BOOLEAN DEFAULT FALSE,  
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (event_id) REFERENCES events(id) ON DELETE CASCADE,

@@ -5,6 +5,7 @@
   - [2. **User Login**](#2-user-login)
   - [3. **Categories**](#3-categories)
   - [4. **Events**](#4-events)
+  - [5. **Tickets**](#5-tickets)
 
 ### 1. **User Registration**
 
@@ -136,7 +137,7 @@
     ```
 ### 4. **Events**
 - **URL:** `/categories`
-- **Method:** `GET, POst`
+- **Method:** `GET, POST, PATCH, DELETE`
 - **Description:** Get a list of all categories. It can also be used to add an event
 - #### i. `GET Method`
     - **Description:** Get a list of all or one categories. It uses pagination and limit as a parameter.
@@ -268,8 +269,79 @@
         ```json
           "message": "Event '${title}' deleted successfully"
           ```
-   
+### 5. **Tickets**
+  *NOTE - `All ticket routes should have the Authoorization as the request Headers`*
+   -   **Request headers:**
+        ```js
+        Authorization: '[Your_access_token]'
+        ```
+  - #### i. Add ticket
+    -   **Description:** Add a ticket to an Event(booking an event)
+    -   **Method:** `/tickets` 
+    -   **Method:** `POST`
+    - **Request body**
+    ```json
+     {
+      "event_id": "<id of the event>",
+      "attendee_name": "<name of the attendee>",
+      "attendee_email": "<Attendee's email (optional) >"
+     }
+     ```
+    - **Responses**
+      - **500** - A server side error occured
+      - **201** - Created successfully
+        example: 
+        ```json
+            {
+            "message": "Ticket added successfully",
+            "ticket": {
+              "id": "9636f303-6094-4095-abc0-eb5f4c371933",
+              "event_id": 1,
+              "user_id": "4fe92868-bf44-4fbb-b66d-cc7591aceefd"
+                  }
+              }
+         ```
+  - #### ii.  Edit ticket
+    -  **Description:** Add a ticket to an Event(booking an event)
+    -  **Method:** `/tickets/[id]` 
+    -  **Method:** `PATCH`
+    -  **body**
+       ```json
+       {
+         "event_id": "<event id >",<!-- This is required  -->
+        "attendee_name": "Michael Mwangangi",
+        "attendee_email": "dmwas@gmail.com",
+        "used": false <!-- This value can only be edited by the event creator -->
+       }
+       ```
+    - **Responses**
+      - *403* - Not allowed to edit. This can be because you are editing a non-allowed field or the ticket is not yours
+        ```json
+          {
+           "message": "Unauthorized edit 'used'. Please contact event owner"
+           }
+        ```
+      - *200* - Successfully updated ticket
+        ```json
+          {
+          "message": "Ticket updated successfully",
+          "ticket": {
+            "id": "[ticket id]",
+            <!-- other ticket details changed -->
+            "used": false
+          }
+         }
+         ```
+      - *500* - Server error
+        ```json
+           {
+           "message": "Error updating ticket. Please try again"
+           } 
+        ```
 
+
+
+  
 
       
 
