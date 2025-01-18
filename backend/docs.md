@@ -261,6 +261,13 @@
     - URL - `/event/[event_id]`
     - Method - `DELETE`
     - Headers - Authorization : `Your_Token`
+    - **responses**
+      - 404 - Not found (The event id does noe exist on the database)
+      - 500 - There was an error on the server side
+      - 200 - successfully deleted the event
+        ```json
+          "message": "Event '${title}' deleted successfully"
+          ```
 
 
       
