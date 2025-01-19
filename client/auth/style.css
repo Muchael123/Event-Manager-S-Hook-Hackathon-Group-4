@@ -183,3 +183,20 @@ button:hover{
         width: 290px;
     }
 }
+
+
+.alert{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    padding: 10px;
+    background: #B86566;
+    color: #fff;
+    font-size: 1em;
+    text-align: center;
+    display: none;
+}
+.alert-success{
+    background: #658CBB;
+}

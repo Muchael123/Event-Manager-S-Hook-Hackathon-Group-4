@@ -33,6 +33,7 @@ async function signupUser(event) {
 
     console.log(data);
 
+   try{
     const response = await fetch('https://event-manager-g4.vercel.app/api/v1/auth/register', {
         method: 'POST',
         headers: {
@@ -44,17 +45,64 @@ async function signupUser(event) {
             name: data.name,
         }),
     });
-
+    
+    const myAlert = document.createElement('div');
+    if(!response.ok){
+        const result = await response.json();
+        console.log(result.message, response.status);
+        alert(result.message);
+        return;
+    }
     const result = await response.json();
     console.log(result);
-
-    if (result.status === 'success') {
-        alert('Signup successful');
-        location.reload();
-    } else {
-        alert(result.error);
+    alert('User registered successfully');
+    window.location.reload();
+   }
+   catch(error){
+       console.log(error);
+       alert('An error occured');
     }
+}
+
+async function loginUser(event) {
+    event.preventDefault();
+    const form = document.getElementById('login-form');
+    const formData = new FormData(form);
+    const data = {};
+    formData.forEach((value, key) => {
+        data[key] = value;
+    });
+
+    try{
+        const response = await fetch('https://event-manager-g4.vercel.app/api/v1/auth/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                email: data.email,
+                password: data.password,
+            }),
+        });
+        if(!response.ok){
+            const result = await response.json();
+            console.log(result.message, response.status);
+            alert(result.message);
+            return;
+        }
+        const result = await response.json();
+        console.log(result);
+        localStorage.setItem('token', result.token);
+        alert('Login successful');
+        window.location.href = '/home';
+    }
+    catch(error){
+        console.log(error);
+        alert('An error occured. Please try again');
+    }
+
 }
 
 
 document.getElementById('signup-form').addEventListener('submit', signupUser);
+document.getElementById('login-form').addEventListener('submit', loginUser);
