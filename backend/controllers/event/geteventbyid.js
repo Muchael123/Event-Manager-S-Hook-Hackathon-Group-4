@@ -2,6 +2,7 @@ import connection from "../../lib/db.js";
 
 export default async function GetEventById (req, res){
     const { id } = req.params;
+    console.log(id, "id")
     if (!id ) {
         return res.status(400).json({ message: 'Invalid request. Please provide an event id' });
     }
@@ -11,7 +12,7 @@ export default async function GetEventById (req, res){
     }
     const query = `SELECT * FROM events WHERE id = ?`;
     try {
-        const [result] = await connection.js.promise().query(query, [id]);
+        const [result] = await connection.promise().query(query, [id]);
         if (result.length === 0) {
             return res.status(404).json({ message: 'Event not found' });
         }

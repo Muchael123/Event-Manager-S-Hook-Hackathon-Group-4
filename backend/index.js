@@ -5,16 +5,32 @@ import EventsRouter from './routes/events.route.js'
 import TicketRoutes from './routes/tickets.routes.js'
 import createAllTables from './lib/createTables.js'
 import morgan from 'morgan'
+import multer from 'multer'
+import cors from 'cors'
+import fs from 'fs'
 
+const upload = multer();
 const app = express()
 const port = 3001
 const apiurl = "/api/v1"
 
 app.use(express.json())
+app.use(upload.any());
+app.options("*", cors());
+app.use(cors({
+  origin: "*",
+}))
 app.use(express.urlencoded({ extended: false }))
 app.use(morgan('combined',{
   skip: function (req, res) { return res.statusCode === 500 }
 }))
+app.use(morgan('common', {
+  stream: fs.createWriteStream('./access.log', { flags: 'a' })
+}))
+app.use(async (req, res, next) => {
+  const error = createError.NotFound("The page does not exist");
+  next(error);
+});
 
 createAllTables()
 
