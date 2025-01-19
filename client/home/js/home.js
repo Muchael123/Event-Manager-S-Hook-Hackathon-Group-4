@@ -1,6 +1,6 @@
 import { fetchCategories } from './lib/fetchCategories.js';
 import fetchEvents from './lib/fetchEvents.js';
-import { checkToken } from './lib/Token.js';
+import { checkToken, GetTokenfromLocalStorage } from './lib/Token.js';
 
 checkToken();
 async function populateCategories() {
@@ -96,8 +96,45 @@ async function populateEvents() {
         console.error('Error displaying events:', error);
       }
     }
-    
+const token = GetTokenfromLocalStorage();
+
+
+async function fetchUserData (){
+  try{
+    const response = await fetch('https://event-manager-g4.vercel.app/api/v1/auth/user', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `${token}`
+      }});
+      const result = await response.json();
+      if(!response.ok){
+        console.log(result.message, response.status);
+        alert(result.message);
+        return;
+      }
+      //user profile
+      const userCard = document.getElementById('user-card');
+      const userimage = document.createElement('img');
+      userimage.classList.add('user-image');
+      userimage.src = result.image_url;
+      userimage.alt = `${result.name} Image`;
+      userCard.appendChild(userimage);
+
+      //user greet name
+      const greetName = document.createElement('h3');
+      greetName.classList.add('greet-name');
+      greetName.textContent = `Hello ${result.name}`;
+      userCard.appendChild(greetName);
+
+}catch(error){
+  alert('An error occured while fetching user data');
+  console.error('Error fetching user data:', error);
+}
+}
 
 // Call the function to populate categories
+
 populateCategories();
 populateEvents();
+fetchUserData();
