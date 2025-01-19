@@ -7,6 +7,7 @@ import  GetEventById from "../controllers/event/geteventbyid.js";
 import EditEventValidator from "../middlewares/ValidateEdit.js";
 import EditEvent from "../controllers/event/EditEvent.js";
 import DeleteEvent from "../controllers/event/deleteEvent.js";
+import UploadImage from "../middlewares/UploadFiles.js";
 
 const router = Router()
 
@@ -15,7 +16,7 @@ router.get("/", GetEvents )
 //get event by id
 router.get("/:id", GetEventById)
 //create event
-router.post("/", verifyToken, EventValidator, CreateEvent)
+router.post("/", verifyToken,UploadImage, EventValidator, CreateEvent)
 //edit event
 router.patch("/edit", verifyToken,EditEventValidator, EditEvent)
 
