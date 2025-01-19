@@ -10,7 +10,7 @@ function GetTokenfromLocalStorage() {
 }
 function checkToken() {
     if (GetTokenfromLocalStorage() === null) {
-        window.location.href = '/login.html';
+        window.location.href = '/auth';
     }
 }
 export { AddTokentoLocalStorage, RemoveTokenfromLocalStorage, GetTokenfromLocalStorage, checkToken };

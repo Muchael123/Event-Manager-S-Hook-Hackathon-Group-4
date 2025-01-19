@@ -15,6 +15,7 @@ const apiurl = "/api/v1"
 
 app.use(express.json())
 app.use(upload.any());
+app.use(cors());
 app.options("*", cors());
 app.use(cors({
   origin: "*",

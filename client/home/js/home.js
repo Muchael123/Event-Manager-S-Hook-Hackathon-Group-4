@@ -2,7 +2,7 @@ import { fetchCategories } from './lib/fetchCategories.js';
 import fetchEvents from './lib/fetchEvents.js';
 import { checkToken } from './lib/Token.js';
 
-// checkToken();
+checkToken();
 async function populateCategories() {
   try {
     let categories = await fetchCategories(); 
