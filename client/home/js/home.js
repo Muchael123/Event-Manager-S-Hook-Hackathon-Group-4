@@ -97,16 +97,24 @@ async function populateEvents() {
       }
     }
 const token = GetTokenfromLocalStorage();
-
-async function fetchUserData (){
+async function fetchUserData() {
   try {
+    const token = GetTokenfromLocalStorage();
+    if (!token) {
+      alert('No token found, please login again');
+      window.location.href = 'login.html';
+      return;
+    }
+
     const response = await fetch('https://event-manager-g4.vercel.app/api/v1/auth/user', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': token // Ensure token is valid
+        'Authorization': token
       }
     });
+
+    const result = await response.json();
 
     if (response.status === 401) {
       alert('Session expired, please login again');
@@ -115,32 +123,30 @@ async function fetchUserData (){
     }
 
     if (!response.ok) {
-      const result = await response.json();
       console.log(result.message, response.status);
       alert(result.message);
       return;
     }
 
-    const result = await response.json();
-
     if (response.status === 200) {
       const userCard = document.getElementById('user-card');
-      if (userCard) {
-        // User profile
-        const userImage = document.createElement('img');
-        userImage.classList.add('user-image');
-        userImage.src = result.image_url; 
-        userImage.alt = `${result.name} Image`;
-        userCard.appendChild(userImage);
-
-        // User greet name
-        const greetName = document.createElement('h3');
-        greetName.classList.add('greet-name');
-        greetName.textContent = `Hello ${result.name}`;
-        userCard.appendChild(greetName);
-      } else {
+      if (!userCard) {
         console.error('User card element not found');
+        return;
       }
+
+      // User profile
+      const userImage = document.createElement('img');
+      userImage.classList.add('user-image');
+      userImage.src = result.image_url || 'default-image-url'; // Default image URL
+      userImage.alt = `${result.name || 'User'} Image`;
+      userCard.appendChild(userImage);
+
+      // User greet name
+      const greetName = document.createElement('h3');
+      greetName.classList.add('greet-name');
+      greetName.innerText = `Hello ${result.name || 'Anonymous'}`;
+      userCard.appendChild(greetName);
     }
 
   } catch (error) {
@@ -148,6 +154,7 @@ async function fetchUserData (){
     console.error('Error fetching user data:', error);
   }
 }
+
 
 function Logout() {
   localStorage.removeItem('token');

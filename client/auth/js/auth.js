@@ -98,8 +98,10 @@ async function loginUser(event) {
         const result = await response.json();
         console.log(result);
         localStorage.setItem('token', result.token);
+        localStorage.setItem('userId', result.user.id);
+        localStorage.setItem('userName', result.user.name);
         alert('Login successful');
-        window.location.replace = '/home';
+        window.location.reload();
     }
     catch(error){
         console.log(error);
