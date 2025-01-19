@@ -22,6 +22,7 @@ router.get("/user", verifyToken, async (req,res)=>{
         return res.status(404).send("user not found")
     }
     else{
+        console.log(result[0].name)
         return res.status(200).json({user : {
             name: result[0].name,
             email: result[0].email,
