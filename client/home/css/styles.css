@@ -121,6 +121,12 @@ main{
    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
    scale: 1.05;
 }
+.event-image{
+   width: 50%;
+   max-height: 100%;
+   border-radius: 15px;
+   object-fit: cover;
+}
 hr{
    width: 100%;
    margin: 10px 0;
@@ -139,6 +145,13 @@ hr{
        padding: 5px; 
        
    }
+   .event-image{
+         width: 100%;
+
+   }
+   .event-card{
+         flex-direction: column;
+   }
    .logo-text {
        font-size: 2em; 
    }
@@ -151,5 +164,8 @@ hr{
    }
    .events-title {
        flex-direction: column; 
+   }
+   .body{
+      overflow-x: hidden;
    }
 }
