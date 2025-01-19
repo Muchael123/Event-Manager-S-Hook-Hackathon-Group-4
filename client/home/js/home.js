@@ -3,7 +3,7 @@ import fetchEvents from './lib/fetchEvents.js';
 import { checkToken, GetTokenfromLocalStorage } from './lib/Token.js';
 
 checkToken();
-async function populateCategories() {
+export async function populateCategories() {
   try {
     let categories = await fetchCategories(); 
     console.log(categories);
@@ -102,7 +102,7 @@ async function fetchUserData() {
     const token = GetTokenfromLocalStorage();
     if (!token) {
       alert('No token found, please login again');
-      window.location.href = 'login.html';
+      window.location.href = '/auth';
       return;
     }
 
@@ -115,10 +115,11 @@ async function fetchUserData() {
     });
 
     const result = await response.json();
+    console.log(result);
 
     if (response.status === 401) {
       alert('Session expired, please login again');
-      window.location.href = 'login.html';
+      window.location.href = '/auth';
       return;
     }
 
@@ -136,16 +137,17 @@ async function fetchUserData() {
       }
 
       // User profile
+      const userData = result.user
       const userImage = document.createElement('img');
       userImage.classList.add('user-image');
-      userImage.src = result.image_url || 'default-image-url'; // Default image URL
-      userImage.alt = `${result.name || 'User'} Image`;
+      userImage.src = userData.image_url || 'default-image-url'; // Default image URL
+      userImage.alt = `${userData.name || 'User'} Image`;
       userCard.appendChild(userImage);
 
       // User greet name
       const greetName = document.createElement('h3');
       greetName.classList.add('greet-name');
-      greetName.innerText = `Hello ${result.name || 'Anonymous'}`;
+      greetName.innerText = `Hello ${userData.name || 'Anonymous'}`;
       userCard.appendChild(greetName);
     }
 

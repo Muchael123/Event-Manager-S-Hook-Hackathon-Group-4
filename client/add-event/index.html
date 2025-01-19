@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventHub - Inspired by Meetup</title>
+    <link rel="stylesheet" href="../add-event/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class='logo-text'>Hafla</h1>
+            <nav>
+                <a href="#" class="active">Events</a>
+                <a href="#">Groups</a>
+                <a href="#">Calendar</a>
+            </nav>
+        </div>
+    </header>
+    <main class="container">
+        <section id="event-form-section">
+            <h2>Create a New Event</h2>
+            <form id="eventForm">
+                <div class="form-group">
+                    <label for="title">Event Title</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description" name="description" required></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="event_date">Date</label>
+                        <input type="date" id="event_date" name="event_date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="event_time">Time</label>
+                        <input type="time" id="event_time" name="event_time" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="duration">Duration (minutes)</label>
+                        <input type="number" id="duration" name="duration" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input type="text" id="location" name="location" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="image">Event Image</label>
+                    <input type="file" id="image" name="image" accept="image/*" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="category">Category</label>
+                        <select id="categories" name="category"  required>
+                            <option value="">Select Category</option>
+                            
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="max_attendees">Max Attendees</label>
+                        <input type="number" id="max_attendees" name="max_attendees" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="ticket_price">Ticket Price ($)</label>
+                        <input type="number" id="ticket_price" name="ticket_price" step="0.01" required>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="is_featured" name="is_featured">
+                        <label for="is_featured">Featured Event</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="current_attendees">Current Attendees</label>
+                    <input type="number" id="current_attendees" name="current_attendees" required>
+                </div>
+                <button type="submit">Create Event</button>
+            </form>
+        </section>
+        <div id="statusMessage"></div>
+        <section id="event-list-section">
+            <h2>Upcoming Events</h2>
+            <div id="eventList"></div>
+        </section>
+    </main>
+    <script type="module" src="../add-event/js/script.js"></script>
+</body>
+</html>
