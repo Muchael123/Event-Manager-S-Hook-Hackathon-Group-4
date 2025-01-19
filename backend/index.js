@@ -7,7 +7,6 @@ import createAllTables from './lib/createTables.js'
 import morgan from 'morgan'
 import multer from 'multer'
 import cors from 'cors'
-import fs from 'fs'
 
 const upload = multer();
 const app = express()
@@ -23,9 +22,6 @@ app.use(cors({
 app.use(express.urlencoded({ extended: false }))
 app.use(morgan('combined',{
   skip: function (req, res) { return res.statusCode === 500 }
-}))
-app.use(morgan('common', {
-  stream: fs.createWriteStream('./access.log', { flags: 'a' })
 }))
 
 createAllTables()
