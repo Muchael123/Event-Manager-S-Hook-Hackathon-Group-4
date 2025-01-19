@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href= "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+
+    <head>
+        <title>
+            Event Manager
+        </title>
+    </head>
+    <body style = "background-color: #658CBB" onload = "getCreated()">
+        <div style = "padding-left: 30%;">
+            <button class = "addnewbutton" onclick="doLogout()">
+                <span class = "fa fa-sign-out" aria-hidden="true"></span>
+                <span class = "descriptions">Logout</span>
+            </button>
+        </div>
+        <div class = "usersumback">
+            <div id = "userwelcome" class = "usersum">
+            </div>
+        </div>
+        <br \><br \><br \><br \>
+        <div>
+            <div class = "searchbar">
+                <span class = "tableheader" text-align:"center">My Created Events</span>
+                <button id="seePersonal" type = "button" class = "addnewbutton" class = "trigger" onclick="goHome()">        
+                    <span class = "descriptions">Home</span>
+                </button>
+                
+                <br \><br \>
+         
+            </div>
+            </br>  
+            <div class = "tableback">
+                <div class = "contable">
+                    <span id = "contactAddResult"></span>
+                    <table id = "contactTable" class = "tbl_contacts">
+                        <thead>
+                            <tr>
+                                <th>Event Title</th>
+                                <th>Event Description</th>
+                                <th>URL</th>
+                                <th>Start Date</th>
+                                <th>End Date</th>
+                                <th>Address</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>                
+                    </table>
+                </div>
+            </div> 
+    </div>
+    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" src="js/code.js"></script>
+   <script>
+    function goHome()
+{
+	window.location.href = "participant.html";
+}
+   </script>
