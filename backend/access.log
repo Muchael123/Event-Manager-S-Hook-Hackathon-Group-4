@@ -1,0 +1,1 @@
+::1 - - [19/Jan/2025:10:10:50 +0000] "GET /api/v1/events?page=1&limit=5&categories=Conferences,%20Hackathons HTTP/1.1" 404 29

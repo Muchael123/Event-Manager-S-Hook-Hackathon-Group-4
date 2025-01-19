@@ -27,10 +27,6 @@ app.use(morgan('combined',{
 app.use(morgan('common', {
   stream: fs.createWriteStream('./access.log', { flags: 'a' })
 }))
-app.use(async (req, res, next) => {
-  const error = createError.NotFound("The page does not exist");
-  next(error);
-});
 
 createAllTables()
 
