@@ -8,7 +8,7 @@ export default async function Register(req, res) {
         req.body.password,10
       );
     const phone_no = req.body.phone_no || '+254 700 000 000';
-    const profile_img = req.body.profile_img || 'https://www.nicepng.com/png/detail/933-9332131_profile-picture-default-png.png';
+    const profile_img = req.body.profile_img || 'https://res.cloudinary.com/dwdhxgvsl/image/upload/v1737304900/event-manager/users/blank-profile-picture_wi1n7m.webp';
     const id = randomUUID();
     console.log("id",id);
     console.log(email, password, name, phone_no, profile_img);
