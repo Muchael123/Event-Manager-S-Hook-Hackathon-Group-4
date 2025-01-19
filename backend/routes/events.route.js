@@ -16,7 +16,7 @@ router.get("/", GetEvents )
 //get event by id
 router.get("/:id", GetEventById)
 //create event
-router.post("/", verifyToken,UploadImage, EventValidator, CreateEvent)
+router.post("/", verifyToken, EventValidator, UploadImage, CreateEvent)
 //edit event
 router.patch("/edit", verifyToken,EditEventValidator, EditEvent)
 

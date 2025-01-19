@@ -5,6 +5,7 @@ export default async function  UploadImage (req, res, next) {
     if (!file) {
         return res.status(400).send("Please upload an image");
     }
+    console.log("file recieved...")
     const ImageBuffer = file?.buffer?.toString("base64");
     const  result = await Cloudinary.uploader.upload(`data:${file?.mimetype};base64,${ImageBuffer}`,{
         folder: 'event-manager/events',

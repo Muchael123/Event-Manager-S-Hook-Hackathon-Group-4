@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken'
 export default function verifyToken (req, res, next){
     const Token = req.header('Authorization')
+    console.log(Token, "<<< this is the token")
     if (!Token) {
         res.status(401).json({ message: "Access denied" })
         return;
