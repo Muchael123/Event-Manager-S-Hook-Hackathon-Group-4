@@ -3,6 +3,11 @@ const showLogin = document.getElementById('showLogin');
 const loginSection = document.querySelector('section:first-of-type');
 const signupSection = document.getElementById('signup');
 
+const token = localStorage.getItem('token');
+if (token) {
+    window.location.replace('/home');
+}
+
 showSignup.addEventListener('click', (e) => {
   e.preventDefault();
   loginSection.style.display = 'none';
@@ -94,7 +99,7 @@ async function loginUser(event) {
         console.log(result);
         localStorage.setItem('token', result.token);
         alert('Login successful');
-        window.location.href = '/home';
+        window.location.replace = '/home';
     }
     catch(error){
         console.log(error);
