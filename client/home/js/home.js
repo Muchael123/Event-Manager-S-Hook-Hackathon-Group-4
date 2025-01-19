@@ -98,40 +98,65 @@ async function populateEvents() {
     }
 const token = GetTokenfromLocalStorage();
 
-
 async function fetchUserData (){
-  try{
+  try {
     const response = await fetch('https://event-manager-g4.vercel.app/api/v1/auth/user', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `${token}`
-      }});
-      const result = await response.json();
-      if(!response.ok){
-        console.log(result.message, response.status);
-        alert(result.message);
-        return;
+        'Authorization': token // Ensure token is valid
       }
-      //user profile
+    });
+
+    if (response.status === 401) {
+      alert('Session expired, please login again');
+      window.location.href = 'login.html';
+      return;
+    }
+
+    if (!response.ok) {
+      const result = await response.json();
+      console.log(result.message, response.status);
+      alert(result.message);
+      return;
+    }
+
+    const result = await response.json();
+
+    if (response.status === 200) {
       const userCard = document.getElementById('user-card');
-      const userimage = document.createElement('img');
-      userimage.classList.add('user-image');
-      userimage.src = result.image_url;
-      userimage.alt = `${result.name} Image`;
-      userCard.appendChild(userimage);
+      if (userCard) {
+        // User profile
+        const userImage = document.createElement('img');
+        userImage.classList.add('user-image');
+        userImage.src = result.image_url; 
+        userImage.alt = `${result.name} Image`;
+        userCard.appendChild(userImage);
 
-      //user greet name
-      const greetName = document.createElement('h3');
-      greetName.classList.add('greet-name');
-      greetName.textContent = `Hello ${result.name}`;
-      userCard.appendChild(greetName);
+        // User greet name
+        const greetName = document.createElement('h3');
+        greetName.classList.add('greet-name');
+        greetName.textContent = `Hello ${result.name}`;
+        userCard.appendChild(greetName);
+      } else {
+        console.error('User card element not found');
+      }
+    }
 
-}catch(error){
-  alert('An error occured while fetching user data');
-  console.error('Error fetching user data:', error);
+  } catch (error) {
+    alert('An error occurred while fetching user data');
+    console.error('Error fetching user data:', error);
+  }
 }
+
+function Logout() {
+  localStorage.removeItem('token');
+  window.location.reload();
 }
+
+const logoutbtn = document.getElementById('logout');
+logoutbtn.addEventListener('click', Logout);
+
 
 // Call the function to populate categories
 
