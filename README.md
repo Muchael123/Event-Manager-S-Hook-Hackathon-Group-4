@@ -5,10 +5,10 @@ Access the Event Manager application here: [Event Manager App.
 
 **To run the project, follow these steps to set up your environment and backend:**
 
-Install VS Code
+**Install VS Code**
 
 Download and install [Visual Studio Code (VS Code)](https://code.visualstudio.com/). It will serve as your code editor.
-Install Node.js and npm
+**Install Node.js and npm**
 
 Download and install [Node.js](https://nodejs.org/en) (includes npm).
 Confirm installation by running the following commands in your terminal:
