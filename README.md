@@ -1,5 +1,33 @@
 **Event Manager Hackathon Challenge 🚀(HAFLA EVENT MANAGEMENT SYSTEM)**
 
+Access the Event Manager application here: [Event Manager App.
+](https://event-manager-group-4.vercel.app/)
+
+**To run the project, follow these steps to set up your environment and backend:**
+
+Install VS Code
+
+Download and install [Visual Studio Code (VS Code)](https://code.visualstudio.com/). It will serve as your code editor.
+Install Node.js and npm
+
+Download and install [Node.js](https://nodejs.org/en) (includes npm).
+Confirm installation by running the following commands in your terminal:
+node -v   # To check the Node.js version
+npm -v    # To check the npm version
+**Install Express.js**
+
+Navigate to your project directory and install Express.js using the following command:
+npm install express --save
+**Set up the Backend**
+
+Place the backend code in the desired directory (e.g., appName.js).
+Run the backend server using this command:
+
+node appName.js
+**Start the Application**
+
+Once the server is running, access the application via the specified port (e.g., http://localhost:3000).
+
 **Overview**
 
 The Event Manager Hackathon Challenge is a full-stack project designed to create a modern, interactive Event Management System. It incorporates a clean user interface and robust backend functionality using HTML, CSS, JavaScript, Node.js, and MySQL. The aim is to test full-stack development skills, focusing on responsive design, user-friendly interfaces, and efficient database management.
