@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #B86566, #658CBB), url('tickets.jpg'); 
+            background-size: cover;
+            backface-visibility: visible;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+        }
+        .ticket-container {
+            background: white;
+            padding: 20px;
+            border: 2px solid #658CBB;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            text-align: center;
+        }
+        .ticket-header {
+            background: #658CBB;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .ticket-body {
+            padding: 20px;
+        }
+        .ticket-footer {
+            text-align: center;
+            padding: 10px;
+            border-top: 1px solid #eee;
+        }
+        .back-icon {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            cursor: pointer;
+            
+
+        }
+        .backphoto{
+            position: absolute;
+            opacity: 10%;
+
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="backphoto"><img src="tickets2.jpg" alt=""width="1350" height="603"></div>
+    <div class="back-icon">
+        <a href="index.html"><img src="back.png" alt="Back Icon" width="30" height="40"></a>
+    </div>
+    <div class="ticket-container">
+        <div class="ticket-header">
+            <h2>Event Ticket</h2>
+        </div>
+        <div class="ticket-body">
+            <p>Event Name: <strong>Sample Event</strong></p>
+            <p>Date: <strong>20 January 2025</strong></p>
+            <p>Location: <strong>Sample Venue</strong></p>
+            <p>Tickets Purchased: <strong>3</strong></p>
+        </div>
+        <div class="ticket-footer">
+            <p>Thank you for your purchase!</p>
+        </div>
+    </div>
+    <script>
+        // Add your JavaScript code here
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Page is fully loaded');
+        });
+    </script>
+</body>
+</html>
