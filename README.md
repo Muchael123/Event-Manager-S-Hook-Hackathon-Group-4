@@ -1,4 +1,4 @@
-**Event Manager Hackathon Challenge 🚀(HAFLA EVENT MANAGEMENT SYSTEM)**
+**Event Manager Hackathon Challenge-Group 4 🚀(HAFLA EVENT MANAGEMENT SYSTEM)**
 
 Access the Event Manager application here: [Event Manager App.
 ](https://event-manager-group-4.vercel.app/)
