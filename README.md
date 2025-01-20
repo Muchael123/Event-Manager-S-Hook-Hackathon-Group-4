@@ -1,14 +1,14 @@
-Event Manager Hackathon Challenge 🚀(HAFLA EVENT MANAGEMENT SYSTEM
+**Event Manager Hackathon Challenge 🚀(HAFLA EVENT MANAGEMENT SYSTEM)**
 
-Overview
+**Overview**
 
 The Event Manager Hackathon Challenge is a full-stack project designed to create a modern, interactive Event Management System. It incorporates a clean user interface and robust backend functionality using HTML, CSS, JavaScript, Node.js, and MySQL. The aim is to test full-stack development skills, focusing on responsive design, user-friendly interfaces, and efficient database management.
 
-Features
+**Features**
 
-Basic Features (Must-Have)
+**Basic Features (Must-Have)**
 
-Frontend
+**Frontend**
 
 Responsive, clean, and modern UI.
 
@@ -16,13 +16,13 @@ Mobile-friendly design with intuitive navigation.
 
 Animated transitions and interactions for better user experience.
 
-Backend
+**Backend**
 
 Node.js server with Express.js.
 
 RESTful API for managing events.
 
-Event Management
+**Event Management**
 
 Add events with title, description, and date.
 
@@ -34,7 +34,7 @@ Update existing events.
 
 Delete events with confirmation.
 
-Data Validation
+**Data Validation**
 
 Client-side and server-side validation for forms.
 
@@ -42,38 +42,13 @@ Prevent past-date entries for events.
 
 Proper error handling and user feedback.
 
-Database
+**Database**
 
 MySQL database implementation.
 
 Optimized queries and structured tables.
 
-Bonus Features (Extra Points)
-
-Dark/Light mode toggle.
-
-Loading and error states.
-
-Event categories and tags.
-
-Search and filter events by title or category.
-
-Event image upload.
-
-User authentication.
-
-Share events functionality.
-
-Deployment
-
-Application deployment on platforms like Heroku, Railway, or DigitalOcean.
-
-A live demo URL for testing and evaluation.
-
-Documentation of the deployment process.
-
-Technical Details
-
+**Technical Details**
 Frontend
 
 Technologies: HTML5, CSS3, Vanilla JavaScript.
@@ -98,34 +73,8 @@ Schema: Optimized tables for events, users, and categories.
 
 Integration: SQL queries via the mysql2 Node.js library.
 
-Project Structure
 
-event-manager/
-├── public/
-│   ├── css/
-│   │   └── style.css
-│   └── js/
-│       └── script.js
-├── views/
-│   ├── index.html
-│   ├── add-event.html
-│   └── view-event.html
-├── server.js
-├── db.sql
-├── package.json
-└── README.md
-
-Installation and Setup
-
-Prerequisites
-
-Node.js (v14 or higher).
-
-MySQL (v8.0 or higher).
-
-Git for version control.
-
-Setup Steps
+**Setup Steps**
 
 Clone the Repository:
 
@@ -149,15 +98,15 @@ DB_USER=your_username
 DB_PASSWORD=your_password
 DB_NAME=event_manager_db
 
-Start the Server:
+**Start the Server:**
 
-node server.js
+node serverName.js
 
 Access the Application:
 
 Open your browser and navigate to http://localhost:3000.
 
-Resources
+**Resources**
 
 Node.js Documentation: https://nodejs.org
 
