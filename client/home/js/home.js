@@ -151,7 +151,9 @@ function Logout() {
 }
 
 const logoutbtn = document.getElementById('logout');
+const logoutbtn2  = document.getElementById('small-login')
 logoutbtn.addEventListener('click', Logout);
+logoutbtn2.addEventListener('click', Logout);
 
 // Call the function to populate categories and events
 populateCategories();
