@@ -157,3 +157,20 @@ logoutbtn.addEventListener('click', Logout);
 populateCategories();
 populateEvents();
 fetchUserData();
+
+
+
+const menu = document.getElementById('menu-icon');
+const nav = document.getElementById('menu-content');
+let toggleMenu = false;
+function Toggle (){
+  if(toggleMenu){
+    nav.style.display = 'none';
+    toggleMenu = false;
+  }else{
+    nav.style.display = 'block';
+    toggleMenu = true;
+  }
+}
+menu.addEventListener('click', Toggle);
+

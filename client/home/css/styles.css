@@ -7,6 +7,8 @@ nav a {
    text-decoration: none;
    margin-left: 20px;
    font-weight: 500;
+   display: flex;
+   flex-wrap: wrap;
  }
  
  nav a.active {
@@ -193,8 +195,36 @@ hr{
    font-size: medium;
 }
 
+.menu-icon{
+   display: none;
+   padding: 1em;
+   cursor: pointer;
+   position: relative;
+}
+.fa-solid{
+   font-size: 1.5em;
+}
+.menu-content{
+   display: none;
+   position: absolute;
+   left: -75vw;
+   background-color: white;
+   width: 80vw;
+   border-radius: 12px;
+   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+   padding: 2px;
+   transition: left 0.3s ease;
+   animation: slideIn 0.5s ease-in-out;
 
-
+}
+@keyframes slideIn {
+   from {
+       left: 20vw;
+   }
+   to {
+       left: -75vw;
+   }
+}
 
 @media (max-width: 768px) {
    .header {
@@ -228,4 +258,20 @@ hr{
    .body{
       overflow-x: hidden;
    }
+   .container{
+      align-items: center;
+   }
+   .container nav{
+      display: none;
+   }
+   .logout{
+      display: none;
+   }
+   .user-card{
+      display: none;
+   }
+   .menu-icon, .fa-solid{
+      display: block;
+   }
 }
+
