@@ -20,19 +20,6 @@
     padding: 0 20px;
     margin-top: 20px;
   }
-  
-  header {
-    background-color: white;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-    padding: 15px 0;
-  }
-  
-  header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
   h1 {
     color: var(--meetup-red);
     margin: 0;
