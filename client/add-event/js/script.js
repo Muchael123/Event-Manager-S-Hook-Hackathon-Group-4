@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
       console.log(userId)
 
         try {
-            const response = await fetch('http://localhost:3001/api/v1/events', {
+            const response = await fetch('https://event-manager-g4.vercel.app/api/v1/events', {
                 method: 'POST',
                 headers: {
                     'Authorization': userId
