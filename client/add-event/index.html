@@ -5,18 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>EventHub - Inspired by Meetup</title>
     <link rel="stylesheet" href="../add-event/css/style.css">
+    <link rel="stylesheet" href="../home/css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1 class='logo-text'>Hafla</h1>
-            <nav>
-                <a href="/home" class="active">Events</a>
-                <a href="#">Groups</a>
-                <a href="#">Calendar</a>
-            </nav>
+    <header class="container">
+        <h1 class="logo-text">Hafla</h1>
+        <nav class="one">
+          <a href="/home" class="active">View Events</a>
+          <a href="/add-event">Add Event</a>
+          <a href="#">My tickets</a>
+          <a href="#">My events</a>
+        </nav>
+        <button class="logout" id="logout">Logout</button>
+        <div class="user-card" id="user-card"></div>
+        
+        <div class="menu-icon" >
+          <i class="fa-solid fa-bars" id="menu-icon"></i>
+          <div class="menu-content" id="menu-content">
+            <div class="top-links">
+              <h2>Menu</h2>
+              <div class="small-user-card" id="small-user-card">
+                <img class="small-user-img" src="../about/image2.jpg" alt="user img">
+                <p class="small-user-greet">Hello, user</p>
+              </div>
+            </div>
+            <div class="nav-links">
+              <a href="/home" class="active">View Events</a>
+              <a href="/add-event">Add Event</a>
+              <a href="/tickets">My tickets</a>
+              <a href="/events">My events</a>
+            </div>
+            <button class="small-login" id="small-login">Logout</button>
+          </div>
         </div>
+      </header>
     </header>
     <main class="container">
         <section id="event-form-section">
