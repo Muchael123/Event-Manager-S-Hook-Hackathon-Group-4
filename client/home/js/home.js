@@ -24,13 +24,11 @@ export async function populateCategories() {
 
 async function populateEvents() {
   try {
-    const response = await fetchEvents();
-    if (!response) {
-      document.getElementById('events-container').innerHTML = "No events available.";
+    const events = await fetchEvents();
+    if (!events) {
+      document.getElementById('events-container').innerHTML = "An error occurred.";
       return;
     }
-
-    const events = await response.json();
 
     if (events.length === 0) {
       const eventsContainer = document.getElementById('events-container')
@@ -43,6 +41,7 @@ async function populateEvents() {
     const eventsContainer = document.getElementById('events-container');
 
     events.forEach(event => {
+      console.log(event);
       const eventCard = document.createElement('div');
       eventCard.classList.add('event-card');
       if (event.image_url) {
@@ -67,19 +66,32 @@ async function populateEvents() {
       description.classList.add('event-description');
       description.textContent = event.description;
       eventDetails.appendChild(description);
-
+      const calendarIcon = document.createElement('i');
+      calendarIcon.className = 'fa-regular fa-calendar';
+      
       const eventDate = document.createElement('p');
-      eventDate.textContent = `Date: ${new Date(event.event_date).toLocaleDateString()}`;
+      eventDate.appendChild(calendarIcon);
+      eventDate.appendChild(document.createTextNode (` Date: ${new Date(event.event_date).toLocaleDateString()}`));
       eventDetails.appendChild(eventDate);
 
       const location = document.createElement('p');
-      location.textContent = `Location: ${event.location}`;
+      const locationicon = document.createElement('i');
+      locationicon.className = 'fa-solid fa-location-dot';
+      location.appendChild(locationicon);
+
+      location.appendChild(document.createTextNode(` Location: ${event.location}`));
       eventDetails.appendChild(location);
 
       const ticketPrice = document.createElement('p');
-      ticketPrice.textContent = `Ticket Price: KES ${event.ticket_price}`;
+      const ticketicon = document.createElement('i');
+      ticketicon.className = 'fa-solid fa-money-bill';
+      ticketPrice.appendChild(ticketicon);
+      ticketPrice.appendChild(document.createTextNode(` Ticket Price: ${event.ticket_price}`));
       eventDetails.appendChild(ticketPrice);
-
+      const button = document.createElement('button');
+      button.textContent = 'Attend Event';
+      button.classList.add('attend-button');
+      eventDetails.appendChild(button);
       eventsContainer.appendChild(eventCard);
       eventsContainer.appendChild(document.createElement('hr'));
     });

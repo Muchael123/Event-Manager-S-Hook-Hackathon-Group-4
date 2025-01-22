@@ -3,23 +3,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const eventForm = document.getElementById('eventForm');
     const eventList = document.getElementById('eventList');
     const statusMessage = document.getElementById('statusMessage');
+    //title, event_date, event_time, location, image_url, is_featured, categories[array]
+    
 
     eventForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         
-        const formData = new FormData(eventForm);
+        const formData = new FormData(eventForm); 
         const userId = localStorage.getItem('token');
-
         if (!userId) {
             showStatus('User ID not found. Please log in.', 'error');
             return;
         }
+        for (let [key, value] of formData.entries()) {
+         
+          if(key === "is_featured"){
+            if(value === "on"){
+              formData.set(key, true);
+            }else{
+              formData.set(key, false);
+            }
+          }
+          console.log(`${key}: ${value}`);
+      }
+      console.log(userId)
 
         try {
             const response = await fetch('http://localhost:3001/api/v1/events', {
                 method: 'POST',
                 headers: {
-                    'User-ID': userId
+                    'Authorization': userId
                 },
                 body: formData
             });
@@ -27,13 +40,20 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!response.ok) {
                 throw new Error('Failed to create event');
             }
+            if(response.status == 400){
+              const result = await response.json()
+              console.log(result.error)
+              showStatus(result.error, 'error');
+            }
 
             const eventData = await response.json();
             addEventToList(eventData);
             eventForm.reset();
             showStatus('Event created successfully!', 'success');
+            
         } catch (error) {
             console.error('Error:', error);
+            
             showStatus('Failed to create event. Please try again.', 'error');
         }
     });
@@ -94,12 +114,17 @@ async function populateCategories() {
       if (categories.length === 0) {
         categories = ["No categories"];
       }
+      
+      const categoriesList = document.getElementById('categories-card');
       categories.forEach(category => {
-        const categoriesList = document.getElementById('categories');
-        const categoryElement = document.createElement('option');
+        const categoryLabel = document.createElement('label');
+        const categoryElement = document.createElement('input');
+        categoryElement.type = 'checkbox';
+        categoryElement.name = 'category';
         categoryElement.value = category;
-        categoryElement.text = category;
-        categoriesList.appendChild(categoryElement);
+        categoryLabel.textContent = category;
+        categoryLabel.appendChild(categoryElement);
+        categoriesList.appendChild(categoryLabel);
       });
     } catch (error) {
       console.error('Error populating categories:', error);

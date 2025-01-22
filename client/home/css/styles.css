@@ -24,7 +24,7 @@ nav a {
  nav a.active {
    color: #B86566;
  }
- .container{
+ .containers{
    max-width: 980px;
    display: flex;
    flex-direction: row;
@@ -132,6 +132,7 @@ main{
    display: flex;
    flex-direction: column;
    width: 960px;
+   
 }
 
 .events-container{
@@ -143,6 +144,7 @@ main{
    width: 100%;
    gap: 10px;
    padding-right: 5%;
+   width: 100%;
 }
 .event-card{
    display: flex;
@@ -163,6 +165,12 @@ main{
    align-items: start;
    width: 100%;
    padding: 10px;
+   gap: .8em;
+}
+.event-description{
+   font-size: 1.2em;
+   font-weight: 500;
+   color: #333;
 }
 .event-card:hover{
    cursor: pointer;
@@ -245,6 +253,11 @@ hr{
    animation: slideIn 0.5s ease-in-out;
 
 }
+i{
+   font-size: 1.5em;
+   color: #5f5e5e;
+   margin-right: 10px;
+}
 @keyframes slideIn {
    from {
        left: 20vw;
@@ -304,6 +317,9 @@ hr{
    .user-card{
       background-color: #658CBB;
    }
+   .attend-button{
+      width: 100%;
+   }
 }
 .small-user-img{
    width: 50px;
@@ -323,4 +339,18 @@ hr{
 .small-user-greet{
    font-weight: 100;
    font-size: x-small;
+}
+
+.attend-button{
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   padding: .7em;
+   border-radius: 10px;
+   background-color: #B86566;
+   border-color: transparent;
+   cursor: pointer;
+   color: #fff;
+   font-size: medium;
 }

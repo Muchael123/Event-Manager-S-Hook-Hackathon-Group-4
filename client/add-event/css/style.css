@@ -25,6 +25,13 @@
     margin: 0;
     font-size: 24px;
   }
+ .form-cat{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  
+ }
+ 
   
   nav a {
     color: var(--text-color);
@@ -204,5 +211,26 @@
       font-size: 2em;
     }
   }
-  
-  
+
+  #categories-card{
+    display: flex;
+    flex-direction: column;
+    padding: 20%;
+    background: var(--background-color);
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   }
+#categories-card label{
+  gap: 10px;
+  font-size: 20px;
+  margin-bottom: 18px;
+  display: flex;
+  flex-direction: row;
+}
+#categories-card label input{
+  transform: scale(1.8);
+      margin-right: 14px;
+      border: 2px solid #999;
+      border-radius: 4px;
+}
+
