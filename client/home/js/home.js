@@ -26,7 +26,7 @@ export async function populateCategories() {
 async function populateEvents() {
   try {
     const response = await fetchEvents();
-    if (response.status === 404) {
+    if (!response) {
       document.getElementById('events-container').innerHTML = "No events available.";
       return;
     }
@@ -85,7 +85,7 @@ async function populateEvents() {
       eventsContainer.appendChild(document.createElement('hr'));
     });
   } catch (error) {
-    console.error('Error displaying events:', error);
+    console.log('Error displaying events:', error);
   }
 }
 
@@ -129,14 +129,18 @@ async function fetchUserData() {
 
       const userData = result.user;
       const userImage = document.createElement('img');
+      const smallUserImage = document.getElementsByClassName('small-user-image');
       userImage.classList.add('user-image');
+      smallUserImage.src = userData.profile_img;
       userImage.src = userData.profile_img || 'default-image-url';
       userImage.alt = `${userData.name || 'User'} Image`;
       userCard.appendChild(userImage);
 
       const greetName = document.createElement('h3');
+      const smgreet = document.getElementsByClassName('small-user-greet');
       greetName.classList.add('greet-name');
       greetName.innerText = `Hello ${userData.name}`;
+      smgreet.innerText = `Hello ${userData.name}`;
       userCard.appendChild(greetName);
     }
   } catch (error) {
@@ -151,9 +155,28 @@ function Logout() {
 }
 
 const logoutbtn = document.getElementById('logout');
+const logoutbtn2  = document.getElementById('small-login')
 logoutbtn.addEventListener('click', Logout);
+logoutbtn2.addEventListener('click', Logout);
 
 // Call the function to populate categories and events
 populateCategories();
 populateEvents();
 fetchUserData();
+
+
+
+const menu = document.getElementById('menu-icon');
+const nav = document.getElementById('menu-content');
+let toggleMenu = false;
+function Toggle (){
+  if(toggleMenu){
+    nav.style.display = 'none';
+    toggleMenu = false;
+  }else{
+    nav.style.display = 'block';
+    toggleMenu = true;
+  }
+}
+menu.addEventListener('click', Toggle);
+

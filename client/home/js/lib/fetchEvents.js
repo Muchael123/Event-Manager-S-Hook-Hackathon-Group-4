@@ -5,6 +5,7 @@ export default async function fetchEvents() {
       });
   
       if (!response.ok) {
+        return;
         throw new Error('Failed to fetch events');
       }
   
@@ -12,6 +13,6 @@ export default async function fetchEvents() {
       console.log(events);
       return events.events;
     } catch (error) {
-      console.error('Error:', error);
+      console.log('Error:', error);
     }
     }
