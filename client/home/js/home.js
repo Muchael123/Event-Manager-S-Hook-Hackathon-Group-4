@@ -7,7 +7,6 @@ checkToken();
 export async function populateCategories() {
   try {
     let categories = await fetchCategories(); 
-    console.log(categories);
     if (categories.length === 0) {
       categories = ["No categories"];
     }
