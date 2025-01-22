@@ -14,7 +14,10 @@ export default async function  UploadImage (req, res, next) {
     if (!result) {
         return res.status(500).send("Failed to upload image");
     }
+    console.log(result)
     req.body.image_url = result.secure_url;
+    req.body.image_public_id = result.public_id;
+    
     console.log(req.body.image_url);
     next();
     }
