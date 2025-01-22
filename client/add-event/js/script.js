@@ -50,7 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
             addEventToList(eventData);
             eventForm.reset();
             showStatus('Event created successfully!', 'success');
-            
+            setTimeout(() => {
+            statusMessage.textContent = '';
+            statusMessage.className = '';
+        }, 3000);
         } catch (error) {
             console.error('Error:', error);
             
