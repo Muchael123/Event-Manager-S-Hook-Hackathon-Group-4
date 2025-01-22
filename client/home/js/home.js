@@ -26,7 +26,7 @@ export async function populateCategories() {
 async function populateEvents() {
   try {
     const response = await fetchEvents();
-    if (response.status === 404) {
+    if (!response) {
       document.getElementById('events-container').innerHTML = "No events available.";
       return;
     }
@@ -85,7 +85,7 @@ async function populateEvents() {
       eventsContainer.appendChild(document.createElement('hr'));
     });
   } catch (error) {
-    console.error('Error displaying events:', error);
+    console.log('Error displaying events:', error);
   }
 }
 
@@ -129,14 +129,18 @@ async function fetchUserData() {
 
       const userData = result.user;
       const userImage = document.createElement('img');
+      const smallUserImage = document.getElementsByClassName('small-user-image');
       userImage.classList.add('user-image');
+      smallUserImage.src = userData.profile_img;
       userImage.src = userData.profile_img || 'default-image-url';
       userImage.alt = `${userData.name || 'User'} Image`;
       userCard.appendChild(userImage);
 
       const greetName = document.createElement('h3');
+      const smgreet = document.getElementsByClassName('small-user-greet');
       greetName.classList.add('greet-name');
       greetName.innerText = `Hello ${userData.name}`;
+      smgreet.innerText = `Hello ${userData.name}`;
       userCard.appendChild(greetName);
     }
   } catch (error) {
