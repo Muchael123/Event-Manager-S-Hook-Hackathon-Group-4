@@ -302,7 +302,7 @@ i{
    .container{
       align-items: center;
    }
-   .container nav{
+   .containers nav{
       display: none;
    }
    .logout{
